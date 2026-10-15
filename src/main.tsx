@@ -17,10 +17,10 @@ function App() {
     <h1>Notes — owned QA fixture</h1><p>This synthetic implementation is for integration acceptance, not a real student's assessment.</p>
     <button data-testid="note-new" type="button" onClick={clear}>New note</button>
     <form onSubmit={save} style={{ display: 'grid', gap: 12, marginBlock: 20 }}>
-      <label>Title<input data-testid="note-title" value={title} onChange={event => setTitle(event.target.value)} style={{ display: 'block', width: '100%', boxSizing: 'border-box' }}/></label>
+      <label>Title<input data-testid="note-title" maxLength={200} value={title} onChange={event => setTitle(event.target.value)} style={{ display: 'block', width: '100%', boxSizing: 'border-box' }}/></label>
       <label>Content<textarea data-testid="note-content" value={content} onChange={event => setContent(event.target.value)} style={{ display: 'block', width: '100%', boxSizing: 'border-box' }}/></label>
       <label>Tags<input value={tags} onChange={event => setTags(event.target.value)} style={{ display: 'block', width: '100%', boxSizing: 'border-box' }}/></label>
-      <button data-testid="note-save" type="submit">Save</button><p data-testid="note-error" role="alert">{error}</p>
+      <button data-testid="note-save" type="submit">Save</button><p data-testid="note-error" role="alert" aria-live="polite">{error}</p>
     </form>
     {notes.map(note => <article data-testid="note-card" key={note.id} style={{ border: '1px solid #aaa', padding: 12, marginBlock: 12, overflowWrap: 'anywhere' }}>
       <h2>{note.title}</h2><p>{note.content}</p><p>{note.tags.join(', ')}</p>
